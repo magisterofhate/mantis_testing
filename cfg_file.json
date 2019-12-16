@@ -2,8 +2,8 @@
   "web": {
     "browser": "ff",
     "baseUrl": "http://10.201.48.35/mantisbt-2.22.1/",
-    "username": "tester_1",
-    "password": "test"
+    "username": "administrator",
+    "password": "root1"
   },
   "db": {
     "host": "10.201.48.35",

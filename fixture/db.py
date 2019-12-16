@@ -1,4 +1,6 @@
 import pymysql.cursors
+from model.project import Project
+import itertools
 
 
 class DbFixture:
@@ -13,14 +15,28 @@ class DbFixture:
     def destroy(self):
         self.connection.close()
 
-    def get_group_list_from_db(self):
-        group_list = []
+    def get_project_list_from_db(self):
+        project_list = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select group_id, group_name from group_list")
+            cursor.execute("select id, name from mantis_project_table")
             for row in cursor:
-                (g_id, g_name) = row
+                (p_id, p_name) = row
+                project_list.append((Project(id=p_id, name=p_name)))
         finally:
             cursor.close()
-        return group_list
+        return project_list
+
+    def get_all_project_ids(self):
+        converter = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("select id from mantis_project_table")
+            for row in cursor:
+                (p_id) = row
+                converter.append(p_id)
+        finally:
+            cursor.close()
+        id_list = list(itertools.chain(*converter))
+        return id_list
 

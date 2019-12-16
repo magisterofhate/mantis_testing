@@ -14,6 +14,11 @@ class Navigation:
             wd.get(self.app.base_url)
         self.helpers.wait_for_element("//body")
 
+    def projects_page(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//i[@class='menu-icon fa fa-gears']").click()
+        wd.find_element_by_link_text('Управление проектами').click()
+
     def login(self, user='administrator', pwd='root'):
         self.home_page()
         self.app.wd.find_element_by_xpath("//input[@id='username']").send_keys(user)
@@ -43,3 +48,5 @@ class Navigation:
 
     def is_logged_in_as(self, user):
         return self.app.wd.find_elements_by_xpath("//a/span[@class = 'user-info']") == user
+
+
