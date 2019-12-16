@@ -1,0 +1,14 @@
+{
+  "web": {
+    "browser": "ff",
+    "baseUrl": "http://10.201.48.35/mantisbt-2.22.1/",
+    "username": "tester_1",
+    "password": "test"
+  },
+  "db": {
+    "host": "10.201.48.35",
+    "name": "bugtracker",
+    "user": "root",
+    "pwd": ""
+  }
+}
