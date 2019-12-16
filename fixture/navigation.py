@@ -23,10 +23,6 @@ class Navigation:
         self.app.wd.find_element_by_xpath("//input[@type='submit']").click()
 
     def logout(self):
-        # self.app.wd.find_element_by_xpath("//ul[@class='user-menu dropdown-menu dropdown-menu-right dropdown-yellow "
-        #                                    "dropdown-caret dropdown-close']").click()
-        # self.app.wd.find_elements_by_xpath("//div[@id='navbar-container']/div[2]/ul/li[3]/a/i[2]").click()
-        # self.app.wd.find_elements_by_xpath("//a[contains(text(),'Выход')]").click()
         self.app.wd.get("http://10.201.48.35/mantisbt-2.22.1/logout_page.php")
         self.helpers.wait_for_element("//input[@name='username']")
 
