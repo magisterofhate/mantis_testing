@@ -15,7 +15,6 @@ class ProjectOps:
         self.pick_visibility(project.visibility)
         wd.find_element_by_xpath("//input[@value='Добавить проект']").click()
 
-
     def pick_state(self, state_id):
         wd = self.app.wd
         select = self.app.select
@@ -29,7 +28,6 @@ class ProjectOps:
         dropdown.select_by_value(str(vis_id))
 
     def delete_project(self, name):
-        # name = 'Test_project_1'
         wd = self.app.wd
         wd.find_element_by_link_text(name).click()
         wd.find_element_by_xpath("//input[@value='Удалить проект']").click()

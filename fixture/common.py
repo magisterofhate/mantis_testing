@@ -1,7 +1,8 @@
 import random
 import re
 import string
-from fixture.db import DbFixture as db
+from suds.client import Client
+from suds import WebFault
 from model.project import Project
 from sys import maxsize
 
@@ -47,4 +48,18 @@ def chose_rnd_state():
 def choose_rnd_visibility():
     vis_list = [10, 50]
     return random.choice(vis_list)
+
+
+def get_all_projects_for_user_by_soap(username, password):
+    client = Client("http://10.201.48.35/mantisbt-2.22.1/api/soap/mantisconnect.php?wsdl")
+    try:
+        project_data_list = client.service.mc_projects_get_user_accessible(username, password)
+        project_list = []
+        for each in project_data_list:
+            pr_id = each.id
+            pr_name = each.name
+            project_list.append(Project(id=pr_id, name=pr_name))
+        return project_list
+    except WebFault:
+        return "Something went wrong"
 
