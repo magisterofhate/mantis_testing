@@ -10,5 +10,8 @@
     "name": "bugtracker",
     "user": "root",
     "pwd": ""
+  },
+  "soap": {
+    "url": "http://10.201.48.35/mantisbt-2.22.1/api/soap/mantisconnect.php?wsdl"
   }
 }

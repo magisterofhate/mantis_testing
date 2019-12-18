@@ -50,8 +50,8 @@ def choose_rnd_visibility():
     return random.choice(vis_list)
 
 
-def get_all_projects_for_user_by_soap(username, password):
-    client = Client("http://10.201.48.35/mantisbt-2.22.1/api/soap/mantisconnect.php?wsdl")
+def get_all_projects_for_user_by_soap(soap, username, password):
+    client = Client(soap)
     try:
         project_data_list = client.service.mc_projects_get_user_accessible(username, password)
         project_list = []

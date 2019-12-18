@@ -62,6 +62,14 @@ def check_ui(request):
     return request.config.getoption("--check_ui")
 
 
+@pytest.fixture
+def soap(request):
+    dir_path = request.config.getoption("--file")
+    file_path = op.join(dir_path, "cfg_file.json")
+    soap_url = load_config(file_path)['soap']['url']
+    return soap_url
+
+
 def pytest_addoption(parser):
     parser.addoption("--file", action="store", default="C:/Anatoly_Milinevsky/mantis_testing/")
     parser.addoption("--check_ui", action="store_true")
